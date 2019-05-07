@@ -35,11 +35,24 @@ function mapObj(mapperFn,o) {
 }
 
 function filterObj(predicateFn,o) {
-	// TODO
+	var newObj = {};
+	var keys = Object.keys(o);
+	for (let key of keys) {
+		if (predicateFn(o[key])) newObj[key] = o[key];
+	}
+
+	return newObj;
 }
 
 function reduceObj(reducerFn,initialValue,o) {
-	// TODO
+	var result = initialValue;
+	var keys = Object.keys(o);
+
+	for (let key of keys) {
+		result = reducerFn(result, o[key]);
+	}
+	return result;
+
 }
 
 
